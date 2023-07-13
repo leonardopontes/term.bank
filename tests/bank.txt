@@ -1,0 +1,70 @@
+Bem-vindo ao MoonBank!
+
+-> Criar conta:
+ -> Nome:
+ -> Idade:
+  (< Maior de 18, se não, exibir: Você tem que ter no mínimo 18 anos para criar uma conta no MoonBank)
+  (Se for maior, exibir: Olá +SeuNome / Saldo Inicial R$0.00)
+
+-> Faça seu primeiro depósito no MoonBank:
+
+ -> Fazer um depósito:
+  (= Apenas números e acima de 0, se não, retornar erro: 'Depósitos só apartir de R$0.01'). 
+  (se exibirem letras, retornar erro: 'Palavra digitada + não é um saldo, são letras').
+
+ -> Depois:
+  (Retornar: Olá +SeuNome / Saldo Inicial R$0.00... sendo que dessa vez exibir outra opção: Sair do Aplicativo).
+
+
+
+Será que você poderia me ajudar? eu não queria apenas a solução, mas eu quero buscar compreender. analise meu código, no qual eu estou tentando exibir uma outra opção logo após escolher a opção '1', pedindo o nome dela, sendo que no console retornou erro, que muito provavelmente se deve ao trecho 'account1.question('\n Nome:\n')':
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Bem-vindo ao MoonBank:\n1. Criar Conta\n2. Sair do Aplicativo\n', (option) => {
+  if (option === '1') {
+
+    const account1 = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    account1.question('\nNome:\n', (nome) => {
+      if (nome === '$') {
+        console.log()
+      } else {
+        console.log()
+      }  
+      account1.close();
+    });
+
+  } else if (option === '2') {
+    console.log('Opção 2 selecionada');
+  } else {
+    console.log('Opção inválida');
+  }
+
+  rl.close();
+});
+
+
+
+
+
+Bem-vindo ao MoonBank!
+
+-> Criar conta:
+ -> Nome:
+ -> Idade:
+  (< Maior de 18, se não, exibir: Você tem que ter no mínimo 18 anos para criar uma conta no MoonBank)
+  (Se for maior, exibir: Olá +SeuNome / Saldo Inicial R$0.00)
+
+-> Exibir opções e usabilidades do Banco
+ -> PIX
+ -> Investimentos
+ ->  

@@ -1,0 +1,199 @@
+1- bank.txt
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+
+function mostrarOpcoes() {
+  rl.question('Bem-vindo ao MoonBank:\n1. Criar Conta\n2. Sair do Aplicativo\n', (option) => {
+
+    if (option === '1') {
+      criarContaNome();
+
+    } else if (option === '2') {
+      console.log('Você saiu do aplicativo');
+      rl.close();
+
+    } else {
+      console.log('Opção inválida. Tente novamente');
+      mostrarOpcoes();
+    }
+
+  });
+}
+
+mostrarOpcoes();
+
+
+function criarContaNome() {
+  rl.question('\nNome:\n', (nome) => {
+
+    if (/^[A-Za-z]+$/.test(nome)) {
+      console.log('Nome válido:', nome);
+      criarContaIdade();
+
+    } else {
+      console.log('Nome inválido! Insira apenas letras.');
+      criarContaNome();
+    }
+
+  });
+}
+
+
+function criarContaIdade() {
+  rl.question('\nIdade:\n', (idade) => {
+
+    const idadeInt = parseInt(idade);
+      if (idadeInt >= 18) {
+        console.log('Cadastro realizado com Sucesso');
+        bankOptions();
+
+      } else {
+        console.log('Apenas maiores de 18 podem criar conta no MoonBank no momento.');
+        rl.close();
+      }
+
+  });
+}
+
+criarContaIdade();
+
+
+function bankOptions() {
+  rl.question('Olá, seu saldo inicial é de R$0.00:\n1. Fazer um Depósito\n2. Depois\n3. Sair do Aplicativo\n', (bkOptions) => {
+
+    if (bkOptions === '1') {
+      valueDeposit();
+
+    } else if (bkOptions === '2') {
+      bankOptions();
+
+    } else if (bkOptions === '3') { 
+      rl.close();
+
+    } else {
+      console.log('Opção inválida. Tente novamente');
+      bankOptions();
+    }
+
+  });
+}
+
+
+function valueDeposit() {
+  rl.question('\nInsira uma Quantia:\n', (valor) => {
+
+      const valorInt = parseInt(valor);
+      if (valorInt >= 0.01) {
+        console.log('Saldo adicionado com Sucesso!');
+        rl.close();
+
+      } else {
+        console.log('Saldo Insuficiente');
+        valueDeposit();
+      }
+
+  });
+}
+
+
+2- BreakAndContinue.js
+
+const usersMoonBank = [
+    { name: 'Davison', isClient: false }, // Antes estava em 5º, botei no inicio e só apareceu Davison, e em último deve ocorrer o oposto.
+    { name: 'Alice', isClient: true },
+    { name: 'Bob', isClient: false },
+    { name: 'Charlie', isClient: true },
+    { name: 'Eve', isClient: false },
+  ];
+  
+  for (let i = 0; i < usersMoonBank.length; i++) {
+    const user = usersMoonBank[i];
+  
+    // Verifica se o usuário é um cliente
+    if (user.isClient) {
+      console.log(`${user.name} é um cliente de investimentos.`);
+      continue; // Pula para a próxima iteração
+    }
+  
+    // Verifica se o nome do usuário possui mais de 4 caracteres
+    if (user.name.length > 4) {
+      console.log(`${user.name} possui um nome longo.`);
+      break; // Encerra o loop
+    }
+  
+    console.log(`${user.name} é um cliente normal.`);
+  }  
+
+
+3- Fores.js
+
+// 1- For, 2- for in, 3- for of, 4- forEach é um método específico de Arrays
+
+const cart = ["Product 1", "Product 2", "Product 3"];
+
+for (let i = 0; i < cart.length; i++) {
+  console.log(`Product ${i + 1}: ${cart[i]}`);
+  }
+
+
+const user = {
+    name: "John",
+    age: 30,
+    email: "john@example.com"
+  };
+  
+  for (let key in user) {
+    console.log(`${key}: ${user[key]}`);
+  }
+
+
+const numbers = [1, 2, 3, 4, 5];
+
+for (let number of numbers) {
+    console.log(number);
+  }
+
+
+4- NullAndDefined.js
+
+// Null and Undefined
+
+const user = {
+    name: 'John Doe',
+    address: null, // Endereço de entrega não fornecido
+    // ...
+  };
+  
+  function processCheckout(user) {
+    if (user.address === null) {
+      console.log('Por favor, forneça um endereço de entrega.');
+      return;
+    }
+    // Processar o checkout com o endereço fornecido
+  }
+  
+  processCheckout(user);
+  
+
+const task = {
+    title: 'Fazer relatório mensal',
+    dueDate: undefined, // Data de conclusão não definida
+    // ...
+  };
+  
+  function displayTaskDetails(task) {
+    console.log(`Tarefa: ${task.title}`);
+    if (task.dueDate === undefined) {
+      console.log('Data de conclusão não definida.');
+    } else {
+      console.log(`Data de conclusão: ${task.dueDate}`);
+    }
+  }
+  
+  displayTaskDetails(task);  
